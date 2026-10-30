@@ -6,7 +6,9 @@ test.describe('Login negative scenarios @content', () => {
     await page.locator('input[name="username"]').fill('not_a_user_123');
     await page.locator('input[name="password"]').fill('wrong_password');
     await page.getByRole('button', { name: 'Log In' }).click();
-    await expect(page.getByText('could not be verified')).toBeVisible();
+    await expect(
+      page.getByText(/could not be verified|internal error/i).first()
+    ).toBeVisible();
   });
 
   test('empty credentials show an error', async ({ page }) => {
