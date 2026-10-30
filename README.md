@@ -1,9 +1,10 @@
 # Banking Playwright Automation POC
 
+![Playwright Tests](https://github.com/geetesonali01/bank-playwright-poc/actions/workflows/playwright.yml/badge.svg)
+📊 **[Live Test Report](https://geetesonali01.github.io/bank-playwright-poc/)**
+
 End-to-end test automation framework built with **Playwright + TypeScript** on the public
 [ParaBank](https://parabank.parasoft.com) demo banking application.
-
-![Playwright Tests](https://github.com/geetesonali01/bank-playwright-poc/actions/workflows/playwright.yml/badge.svg)
 
 > Only a public demo app is used. No client code, data or credentials are included.
 
