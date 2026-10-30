@@ -3,6 +3,8 @@
 End-to-end test automation framework built with **Playwright + TypeScript** on the public
 [ParaBank](https://parabank.parasoft.com) demo banking application.
 
+![Playwright Tests](https://github.com/geetesonali01/bank-playwright-poc/actions/workflows/playwright.yml/badge.svg)
+
 > Only a public demo app is used. No client code, data or credentials are included.
 
 ## Highlights
@@ -18,16 +20,16 @@ End-to-end test automation framework built with **Playwright + TypeScript** on t
 
 ## Test Coverage Matrix
 
-| Area | Scenario | Type | File |
-|---|---|---|---|
-| Home page | Title, login button, register link visible | UI | `tests/content/home.spec.ts` |
-| Registration | Form visible, empty-form validation errors | UI / Negative | `tests/content/home.spec.ts` |
-| Login | Invalid and empty credentials rejected | Negative | `tests/content/login.spec.ts` |
-| Accounts | Open new savings account | E2E | `tests/transaction/transfer.spec.ts` |
-| Transactions | Transfer funds between own accounts | E2E | `tests/transaction/transfer.spec.ts` |
-| Accounts overview | Accounts listed after opening account | E2E | `tests/transaction/transfer.spec.ts` |
-| Auth API | Login returns customer, wrong password rejected | API | `tests/api/accounts.spec.ts` |
-| Accounts API | Customer accounts returned with balance | API | `tests/api/accounts.spec.ts` |
+| Area              | Scenario                                        | Type          | File                                 |
+| ----------------- | ----------------------------------------------- | ------------- | ------------------------------------ |
+| Home page         | Title, login button, register link visible      | UI            | `tests/content/home.spec.ts`         |
+| Registration      | Form visible, empty-form validation errors      | UI / Negative | `tests/content/home.spec.ts`         |
+| Login             | Invalid and empty credentials rejected          | Negative      | `tests/content/login.spec.ts`        |
+| Accounts          | Open new savings account                        | E2E           | `tests/transaction/transfer.spec.ts` |
+| Transactions      | Transfer funds between own accounts             | E2E           | `tests/transaction/transfer.spec.ts` |
+| Accounts overview | Accounts listed after opening account           | E2E           | `tests/transaction/transfer.spec.ts` |
+| Auth API          | Login returns customer, wrong password rejected | API           | `tests/api/accounts.spec.ts`         |
+| Accounts API      | Customer accounts returned with balance         | API           | `tests/api/accounts.spec.ts`         |
 
 ## Project Structure
 
