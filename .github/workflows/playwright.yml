@@ -1,26 +1,51 @@
 name: Playwright Tests
+
 on:
   push:
     branches: [main]
-  pull_request:
-    branches: [main]
   workflow_dispatch:
 
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
 jobs:
-  test:
+  test-and-publish:
     runs-on: ubuntu-latest
     timeout-minutes: 30
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
+
       - uses: actions/setup-node@v4
         with:
           node-version: 20
+
       - run: npm install
+
       - run: npx playwright install --with-deps
-      - run: npx playwright test
-      - uses: actions/upload-artifact@v4
+
+      - name: Run Playwright tests
+        run: npx playwright test
+
+      # Neeche ke steps tests fail hone par bhi chalte hain,
+      # taaki failure ki report bhi dikhe
+      - uses: actions/configure-pages@v5
+        if: ${{ !cancelled() }}
+
+      - uses: actions/upload-pages-artifact@v3
         if: ${{ !cancelled() }}
         with:
-          name: playwright-report
-          path: playwright-report/
-          retention-days: 30
+          path: playwright-report
+
+      - name: Deploy report to GitHub Pages
+        id: deployment
+        if: ${{ !cancelled() }}
+        uses: actions/deploy-pages@v4
